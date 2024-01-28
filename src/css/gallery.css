@@ -1,5 +1,19 @@
 body {
   width: 1440px;
+  color: #2e2f42;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: crimson;
 }
 
 .gallery {
@@ -26,3 +40,8 @@ img {
 .gallery-image:hover {
   transform: scale(1.05);
 }
+
+.sl-wrapper {
+  background: #2E2F42CC;
+}
+

@@ -1,3 +1,6 @@
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+
 const images = [
     {
       preview:
@@ -91,5 +94,7 @@ function imagesClick(e) {
     e.preventDefault();
 }
 
-// import SimpleLightbox from "simplelightbox";
-// import SimpleLightbox from "simplelightbox/dist/simple-lightbox.min.css";
+const lightboxRef = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});

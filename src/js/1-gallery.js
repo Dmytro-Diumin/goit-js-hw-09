@@ -88,12 +88,6 @@ const imagesMarkupRef = imagesMarkup(images);
 
 galleryRef.insertAdjacentHTML('beforeend', imagesMarkupRef);
 
-galleryRef.addEventListener('click', imagesClick);
-
-function imagesClick(e) {
-    e.preventDefault();
-}
-
 const lightboxRef = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,

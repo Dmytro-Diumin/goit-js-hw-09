@@ -13,11 +13,17 @@ function onFormInput() {
     localStorage.setItem("feedback-form-state", JSON.stringify(userData));
 }
 
-function userDataMessage() {
-    const userDataMessageRef = JSON.parse(localStorage.getItem("feedback-form-state"));
-    if(userDataMessageRef) {
-        emailRef.value = userDataMessageRef.email.trim();
-        messageRef.value = userDataMessageRef.message.trim();
+const userDataMessageRef = localStorage.getItem("feedback-form-state");
+
+if (userDataMessageRef) {
+    const parsedDataRef = JSON.parse(userDataMessageRef);
+
+    const localEmailRef = document.getElementById("email");
+    const localMessageRef = document.getElementById("message");
+
+    if (localEmailRef && localMessageRef) {
+        localEmailRef.value = parsedDataRef.email;
+        localMessageRef.value = parsedDataRef.message;
     }
 }
 

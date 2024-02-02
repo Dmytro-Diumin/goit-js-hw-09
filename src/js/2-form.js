@@ -1,6 +1,6 @@
 const formRef = document.querySelector(".feedback-form");
-const emailRef = document.querySelector(".feedback-form input");
-const messageRef = document.querySelector(".feedback-form textarea");
+const emailRef = formRef.elements.email;
+const messageRef = formRef.elements.message;
 
 formRef.addEventListener("input", onFormInput);
 
@@ -13,19 +13,11 @@ function onFormInput() {
     localStorage.setItem("feedback-form-state", JSON.stringify(userData));
 }
 
-const userDataMessageRef = localStorage.getItem("feedback-form-state");
-
-if (userDataMessageRef) {
-    const parsedDataRef = JSON.parse(userDataMessageRef);
-
-    const localEmailRef = document.getElementById("email");
-    const localMessageRef = document.getElementById("message");
-
-    if (localEmailRef && localMessageRef) {
-        localEmailRef.value = parsedDataRef.email;
-        localMessageRef.value = parsedDataRef.message;
+const userDataMessageRef = JSON.parse(localStorage.getItem("feedback-form-state"));
+    if (userDataMessageRef) {
+        emailRef.value = userDataMessageRef.email;
+        messageRef.value = userDataMessageRef.message;
     }
-}
 
 formRef.addEventListener("submit", onFormSubmit);
 

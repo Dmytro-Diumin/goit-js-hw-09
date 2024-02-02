@@ -13,7 +13,7 @@ function onFormInput() {
     localStorage.setItem("feedback-form-state", JSON.stringify(userData));
 }
 
-const userDataMessageRef = JSON.parse(localStorage.getItem("feedback-form-state"));
+const userDataMessageRef = JSON.parse(localStorage.getItem("feedback-form-state" ?? ""));
     if (userDataMessageRef) {
         emailRef.value = userDataMessageRef.email;
         messageRef.value = userDataMessageRef.message;

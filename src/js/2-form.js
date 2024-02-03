@@ -1,6 +1,7 @@
 const formRef = document.querySelector(".feedback-form");
 const emailRef = formRef.elements.email;
 const messageRef = formRef.elements.message;
+const LOCAL_STORAGE_KEY = "feedback-form-state";
 
 formRef.addEventListener("input", onFormInput);
 
@@ -10,10 +11,10 @@ function onFormInput() {
         email: emailRef.value.trim(),
         message: messageRef.value.trim(),
     };
-    localStorage.setItem("feedback-form-state", JSON.stringify(userData));
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(userData));
 }
 
-const userDataMessageRef = JSON.parse(localStorage.getItem("feedback-form-state" ?? ""));
+const userDataMessageRef = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY || ""));
     if (userDataMessageRef) {
         emailRef.value = userDataMessageRef.email;
         messageRef.value = userDataMessageRef.message;
@@ -30,7 +31,7 @@ function onFormSubmit(e) {
             message: messageRef.value.trim(),
         });
         e.currentTarget.reset();
-        localStorage.removeItem("feedback-form-state");
+        localStorage.removeItem(LOCAL_STORAGE_KEY);
       } else {
         alert('Please enter your email and message');
       }
